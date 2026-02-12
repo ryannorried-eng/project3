@@ -24,10 +24,10 @@ neew/
 - **Install dev tools**: `pip install ruff mypy pytest types-requests pandas-stubs`
 - **Fetch data only**: `python fetch_weather.py`
 - **Generate chart**: `python plot_weather.py`
-- **Lint**: `ruff check .`
-- **Format check**: `ruff format --check .`
-- **Type check**: `mypy .`
-- **Run tests**: `pytest`
+- **Lint**: `python3 -m ruff check .`
+- **Format check**: `python3 -m ruff format --check .`
+- **Type check**: `python3 -m mypy .`
+- **Run tests**: `python3 -m pytest`
 
 ## How It Works
 

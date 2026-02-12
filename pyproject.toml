@@ -1,13 +1,8 @@
 [project]
-name = "neew"
+name = "tech-pack-assistant"
 version = "0.1.0"
 description = "Tech Pack Assistant MVP for fashion technical design workflows"
 requires-python = ">=3.10"
-dependencies = [
-    "requests>=2.28",
-    "pandas>=2.0",
-    "matplotlib>=3.7",
-]
 
 [tool.ruff]
 target-version = "py310"
@@ -22,11 +17,3 @@ python_executable = "/usr/local/bin/python3"
 warn_return_any = true
 warn_unused_configs = true
 disallow_untyped_defs = true
-
-[[tool.mypy.overrides]]
-module = ["matplotlib.*"]
-ignore_missing_imports = true
-
-[[tool.mypy.overrides]]
-module = ["plot_weather"]
-disable_error_code = ["arg-type", "attr-defined", "operator"]

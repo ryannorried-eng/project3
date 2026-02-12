@@ -4,65 +4,38 @@ This file provides guidance to Claude Code when working with this repository.
 
 ## Project Overview
 
-This is the `neew` project. It is in early setup — no build system, test framework, or linting has been configured yet.
+`neew` is a Python data visualization project that compares Los Angeles February weather over the last 10 years (2016–2025). It fetches historical weather data from the Open-Meteo API and generates charts using matplotlib.
 
 ## Repository Structure
 
 ```
 neew/
-├── CLAUDE.md        # This file
-├── README.md        # Project readme
+├── CLAUDE.md           # This file
+├── README.md           # Project readme
+├── .gitignore          # Git ignore rules
+├── requirements.txt    # Python dependencies
+├── fetch_weather.py    # Fetches weather data from Open-Meteo API
+└── plot_weather.py     # Generates the 4-panel weather chart
 ```
 
-## Suggested Commands
+## Commands
 
-No tooling is configured yet. Below are common commands to add once a stack is chosen.
+- **Install dependencies**: `pip install -r requirements.txt`
+- **Fetch data only**: `python fetch_weather.py`
+- **Generate chart**: `python plot_weather.py`
 
-### Node.js / TypeScript
+## How It Works
 
-- **Install dependencies**: `npm install`
-- **Build**: `npm run build`
-- **Test (all)**: `npm test`
-- **Test (single)**: `npm test -- path/to/test`
-- **Lint**: `npm run lint`
-- **Format**: `npm run format`
-- **Dev server**: `npm run dev`
-
-### Python
-
-- **Install dependencies**: `pip install -r requirements.txt` or `pip install -e .`
-- **Build**: `python -m build`
-- **Test (all)**: `pytest`
-- **Test (single)**: `pytest path/to/test.py`
-- **Lint**: `ruff check .`
-- **Format**: `ruff format .`
-- **Type check**: `mypy .`
-
-### Go
-
-- **Build**: `go build ./...`
-- **Test (all)**: `go test ./...`
-- **Test (single)**: `go test ./path/to/package`
-- **Lint**: `golangci-lint run`
-- **Format**: `gofmt -w .`
-
-### Rust
-
-- **Build**: `cargo build`
-- **Test (all)**: `cargo test`
-- **Test (single)**: `cargo test test_name`
-- **Lint**: `cargo clippy`
-- **Format**: `cargo fmt`
-
-### General / CI
-
-- **Git status**: `git status`
-- **Git diff**: `git diff`
-- **Docker build**: `docker build -t neew .`
-- **Docker run**: `docker run neew`
-
-> **Note**: Once a stack is chosen, remove the irrelevant sections and keep only what applies.
+1. `fetch_weather.py` calls the Open-Meteo historical weather API for each February from 2016–2025
+2. Data is cached locally in `la_february_weather.csv`
+3. `plot_weather.py` loads the data and produces a 4-panel chart (`la_february_weather.png`):
+   - Average February temperature by year
+   - Average daily high & low temperatures by year
+   - Total February rainfall by year
+   - Daily average temperature throughout February (all years overlaid)
 
 ## Code Style
 
-No code style conventions have been established yet. Update this section when linters or formatters are configured.
+- Python 3.10+
+- Type hints on function signatures
+- Docstrings on all public functions

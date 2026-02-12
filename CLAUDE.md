@@ -14,17 +14,54 @@ neew/
 ├── README.md        # Project readme
 ```
 
-## Commands
+## Suggested Commands
 
-No build, test, or lint commands are configured yet. Update this section as tooling is added.
+No tooling is configured yet. Below are common commands to add once a stack is chosen.
 
-<!-- Example entries to fill in later:
+### Node.js / TypeScript
+
+- **Install dependencies**: `npm install`
 - **Build**: `npm run build`
 - **Test (all)**: `npm test`
 - **Test (single)**: `npm test -- path/to/test`
 - **Lint**: `npm run lint`
 - **Format**: `npm run format`
--->
+- **Dev server**: `npm run dev`
+
+### Python
+
+- **Install dependencies**: `pip install -r requirements.txt` or `pip install -e .`
+- **Build**: `python -m build`
+- **Test (all)**: `pytest`
+- **Test (single)**: `pytest path/to/test.py`
+- **Lint**: `ruff check .`
+- **Format**: `ruff format .`
+- **Type check**: `mypy .`
+
+### Go
+
+- **Build**: `go build ./...`
+- **Test (all)**: `go test ./...`
+- **Test (single)**: `go test ./path/to/package`
+- **Lint**: `golangci-lint run`
+- **Format**: `gofmt -w .`
+
+### Rust
+
+- **Build**: `cargo build`
+- **Test (all)**: `cargo test`
+- **Test (single)**: `cargo test test_name`
+- **Lint**: `cargo clippy`
+- **Format**: `cargo fmt`
+
+### General / CI
+
+- **Git status**: `git status`
+- **Git diff**: `git diff`
+- **Docker build**: `docker build -t neew .`
+- **Docker run**: `docker run neew`
+
+> **Note**: Once a stack is chosen, remove the irrelevant sections and keep only what applies.
 
 ## Code Style
 

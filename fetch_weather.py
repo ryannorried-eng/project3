@@ -1,7 +1,7 @@
 """Fetch February weather data for Los Angeles over the last 10 years."""
 
-import requests
 import pandas as pd
+import requests
 
 # Los Angeles coordinates
 LAT = 34.0522
@@ -16,7 +16,7 @@ def fetch_february_data(year: int) -> pd.DataFrame:
     # Handle leap years
     end_day = 29 if year % 4 == 0 and (year % 100 != 0 or year % 400 == 0) else 28
 
-    params = {
+    params: dict[str, str | float] = {
         "latitude": LAT,
         "longitude": LON,
         "start_date": f"{year}-02-01",

@@ -4,3 +4,6 @@ __pycache__/
 venv/
 *.png
 *.csv
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/

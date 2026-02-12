@@ -1,13 +1,12 @@
-# neew
+# Tech Pack Assistant (MVP)
 
-Compare Los Angeles February weather over the last 10 years (2016-2025). Fetches historical data from the [Open-Meteo API](https://open-meteo.com/) and generates a 4-panel chart using matplotlib.
+A small Python tool to help with early technical-design workflows for fashion products.
 
-## Charts produced
-
-- Average February temperature by year
-- Average daily high & low temperatures by year
-- Total February rainfall by year
-- Daily average temperature throughout February (all years overlaid)
+This MVP focuses on the core of a tech pack:
+- Style details (style number, name, season, fabric, trims)
+- Measurement spec rows (POM, size, value, tolerance, notes)
+- Revision tracking (version, author, summary, timestamp)
+- Markdown export for sharing
 
 ## Setup
 
@@ -17,35 +16,47 @@ Requires Python 3.10+.
 pip install -r requirements.txt
 ```
 
-## Usage
+## CLI Usage
 
-Fetch the weather data:
+Create a starter tech pack JSON:
 
 ```bash
-python fetch_weather.py
+python tech_pack_assistant.py init --out tech_pack.json
 ```
 
-Generate the chart (fetches data automatically if not cached):
+Add a measurement spec row:
 
 ```bash
-python plot_weather.py
+python tech_pack_assistant.py add-spec \
+  --file tech_pack.json \
+  --pom "Chest Width (1\" below AH)" \
+  --size M \
+  --value 21.0 \
+  --tolerance 0.25 \
+  --notes "Laid flat"
 ```
 
-Output is saved to `la_february_weather.png`.
-
-## Development
-
-Install dev tools:
+Add a revision entry:
 
 ```bash
-pip install ruff mypy pytest types-requests pandas-stubs
+python tech_pack_assistant.py add-revision \
+  --file tech_pack.json \
+  --version v2 \
+  --author "Your Name" \
+  --summary "Updated chest width and neck opening"
 ```
 
-Run checks:
+Export markdown:
 
 ```bash
-ruff check .          # lint
-ruff format --check . # format check
-mypy .                # type check
-pytest                # tests
+python tech_pack_assistant.py export-md --file tech_pack.json --out tech_pack.md
+```
+
+## Development checks
+
+```bash
+ruff check .
+ruff format --check .
+mypy .
+pytest
 ```

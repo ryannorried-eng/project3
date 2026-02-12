@@ -3,6 +3,9 @@ name = "tech-pack-assistant"
 version = "0.1.0"
 description = "Tech Pack Assistant MVP for fashion technical design workflows"
 requires-python = ">=3.10"
+dependencies = [
+    "streamlit>=1.30",
+]
 
 [tool.ruff]
 target-version = "py310"
@@ -17,3 +20,7 @@ python_executable = "/usr/local/bin/python3"
 warn_return_any = true
 warn_unused_configs = true
 disallow_untyped_defs = true
+
+[[tool.mypy.overrides]]
+module = ["streamlit.*"]
+ignore_missing_imports = true

@@ -12,15 +12,17 @@ This file provides guidance to Claude Code when working with this repository.
 ├── CLAUDE.md                       # This file
 ├── README.md                       # Project readme
 ├── .gitignore                      # Git ignore rules
-├── requirements.txt                # Python dependencies (stdlib only)
+├── requirements.txt                # Python dependencies
 ├── pyproject.toml                  # Project config, ruff & mypy settings
-├── tech_pack_assistant.py          # Main CLI and data models
+├── app.py                          # Streamlit web UI
+├── tech_pack_assistant.py          # Core data models and CLI
 └── tests/
     └── test_tech_pack_assistant.py # Tests for the tech pack assistant
 ```
 
 ## Commands
 
+- **Launch web UI**: `streamlit run app.py`
 - **Create starter tech pack**: `python tech_pack_assistant.py init --out tech_pack.json`
 - **Add measurement spec**: `python tech_pack_assistant.py add-spec --file tech_pack.json --pom "Chest Width" --size M --value 21.0 --tolerance 0.25`
 - **Add revision**: `python tech_pack_assistant.py add-revision --file tech_pack.json --version v2 --author "Name" --summary "Updated specs"`

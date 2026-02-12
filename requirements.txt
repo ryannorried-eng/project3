@@ -1,1 +1,1 @@
-# No runtime dependencies — Tech Pack Assistant uses only the Python standard library.
+streamlit>=1.30

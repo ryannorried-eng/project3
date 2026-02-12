@@ -1,7 +1,7 @@
 [project]
 name = "neew"
 version = "0.1.0"
-description = "Compare Los Angeles February weather over the last 10 years"
+description = "Tech Pack Assistant MVP for fashion technical design workflows"
 requires-python = ">=3.10"
 dependencies = [
     "requests>=2.28",

@@ -45,8 +45,12 @@ def plot_high_low(df: pd.DataFrame, ax: plt.Axes) -> None:
     )
     x = yearly.index
     width = 0.35
-    ax.bar(x - width / 2, yearly["high"], width, label="Avg High", color="#E74C3C", edgecolor="white")
-    ax.bar(x + width / 2, yearly["low"], width, label="Avg Low", color="#3498DB", edgecolor="white")
+    ax.bar(
+        x - width / 2, yearly["high"], width, label="Avg High", color="#E74C3C", edgecolor="white"
+    )
+    ax.bar(
+        x + width / 2, yearly["low"], width, label="Avg Low", color="#3498DB", edgecolor="white"
+    )
     ax.set_title("Avg Daily High & Low in February", fontsize=13, fontweight="bold")
     ax.set_ylabel("Temperature (\u00b0F)")
     ax.set_xticks(x)

@@ -21,8 +21,13 @@ neew/
 ## Commands
 
 - **Install dependencies**: `pip install -r requirements.txt`
+- **Install dev tools**: `pip install ruff mypy pytest types-requests pandas-stubs`
 - **Fetch data only**: `python fetch_weather.py`
 - **Generate chart**: `python plot_weather.py`
+- **Lint**: `ruff check .`
+- **Format check**: `ruff format --check .`
+- **Type check**: `mypy .`
+- **Run tests**: `pytest`
 
 ## How It Works
 
@@ -39,3 +44,5 @@ neew/
 - Python 3.10+
 - Type hints on function signatures
 - Docstrings on all public functions
+- Linting and formatting enforced by ruff (config in `pyproject.toml`)
+- Type checking with mypy

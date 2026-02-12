@@ -33,8 +33,14 @@ def plot_avg_temperature(df: pd.DataFrame, ax: plt.Axes) -> None:
     # Add value labels on bars
     for bar in bars:
         height = bar.get_height()
-        ax.text(bar.get_x() + bar.get_width() / 2, height + 0.3,
-                f"{height:.1f}", ha="center", va="bottom", fontsize=8)
+        ax.text(
+            bar.get_x() + bar.get_width() / 2,
+            height + 0.3,
+            f"{height:.1f}",
+            ha="center",
+            va="bottom",
+            fontsize=8,
+        )
 
 
 def plot_high_low(df: pd.DataFrame, ax: plt.Axes) -> None:
@@ -48,9 +54,7 @@ def plot_high_low(df: pd.DataFrame, ax: plt.Axes) -> None:
     ax.bar(
         x - width / 2, yearly["high"], width, label="Avg High", color="#E74C3C", edgecolor="white"
     )
-    ax.bar(
-        x + width / 2, yearly["low"], width, label="Avg Low", color="#3498DB", edgecolor="white"
-    )
+    ax.bar(x + width / 2, yearly["low"], width, label="Avg Low", color="#3498DB", edgecolor="white")
     ax.set_title("Avg Daily High & Low in February", fontsize=13, fontweight="bold")
     ax.set_ylabel("Temperature (\u00b0F)")
     ax.set_xticks(x)
@@ -69,8 +73,14 @@ def plot_rainfall(df: pd.DataFrame, ax: plt.Axes) -> None:
 
     for bar in bars:
         height = bar.get_height()
-        ax.text(bar.get_x() + bar.get_width() / 2, height + 0.05,
-                f"{height:.2f}", ha="center", va="bottom", fontsize=8)
+        ax.text(
+            bar.get_x() + bar.get_width() / 2,
+            height + 0.05,
+            f"{height:.2f}",
+            ha="center",
+            va="bottom",
+            fontsize=8,
+        )
 
 
 def plot_temp_trend(df: pd.DataFrame, ax: plt.Axes) -> None:
@@ -80,8 +90,14 @@ def plot_temp_trend(df: pd.DataFrame, ax: plt.Axes) -> None:
     for i, year in enumerate(years):
         ydf = df[df["year"] == year].sort_values("day")
         color = cmap(i / (len(years) - 1))
-        ax.plot(ydf["day"], ydf["temperature_2m_mean"], label=str(year),
-                color=color, alpha=0.7, linewidth=1.2)
+        ax.plot(
+            ydf["day"],
+            ydf["temperature_2m_mean"],
+            label=str(year),
+            color=color,
+            alpha=0.7,
+            linewidth=1.2,
+        )
     ax.set_title("Daily Avg Temp Throughout February", fontsize=13, fontweight="bold")
     ax.set_xlabel("Day of February")
     ax.set_ylabel("Temperature (\u00b0F)")

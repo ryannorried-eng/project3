@@ -4,26 +4,27 @@ This file provides guidance to Claude Code when working with this repository.
 
 ## Project Overview
 
-`neew` is a Python data visualization project that compares Los Angeles February weather over the last 10 years (2016–2025). It fetches historical weather data from the Open-Meteo API and generates charts using matplotlib.
+**Tech Pack Assistant** is a Python CLI tool for fashion technical-design workflows. It helps designers create, manage, and export garment tech packs with style metadata, measurement specs, and revision history.
 
 ## Repository Structure
 
 ```
-neew/
-├── CLAUDE.md           # This file
-├── README.md           # Project readme
-├── .gitignore          # Git ignore rules
-├── requirements.txt    # Python dependencies
-├── fetch_weather.py    # Fetches weather data from Open-Meteo API
-└── plot_weather.py     # Generates the 4-panel weather chart
+├── CLAUDE.md                       # This file
+├── README.md                       # Project readme
+├── .gitignore                      # Git ignore rules
+├── requirements.txt                # Python dependencies (stdlib only)
+├── pyproject.toml                  # Project config, ruff & mypy settings
+├── tech_pack_assistant.py          # Main CLI and data models
+└── tests/
+    └── test_tech_pack_assistant.py # Tests for the tech pack assistant
 ```
 
 ## Commands
 
-- **Install dependencies**: `pip install -r requirements.txt`
-- **Install dev tools**: `pip install ruff mypy pytest types-requests pandas-stubs`
-- **Fetch data only**: `python fetch_weather.py`
-- **Generate chart**: `python plot_weather.py`
+- **Create starter tech pack**: `python tech_pack_assistant.py init --out tech_pack.json`
+- **Add measurement spec**: `python tech_pack_assistant.py add-spec --file tech_pack.json --pom "Chest Width" --size M --value 21.0 --tolerance 0.25`
+- **Add revision**: `python tech_pack_assistant.py add-revision --file tech_pack.json --version v2 --author "Name" --summary "Updated specs"`
+- **Export markdown**: `python tech_pack_assistant.py export-md --file tech_pack.json --out tech_pack.md`
 - **Lint**: `python3 -m ruff check .`
 - **Format check**: `python3 -m ruff format --check .`
 - **Type check**: `python3 -m mypy .`
@@ -31,13 +32,10 @@ neew/
 
 ## How It Works
 
-1. `fetch_weather.py` calls the Open-Meteo historical weather API for each February from 2016–2025
-2. Data is cached locally in `la_february_weather.csv`
-3. `plot_weather.py` loads the data and produces a 4-panel chart (`la_february_weather.png`):
-   - Average February temperature by year
-   - Average daily high & low temperatures by year
-   - Total February rainfall by year
-   - Daily average temperature throughout February (all years overlaid)
+1. `tech_pack_assistant.py` defines dataclasses for `StyleInfo`, `MeasurementSpec`, `Revision`, and `TechPack`
+2. Tech packs are stored as JSON files
+3. The CLI supports creating starter packs, adding measurement rows, adding revisions, and exporting to markdown
+4. Markdown export generates a shareable document with style details, measurement spec tables, and revision history
 
 ## Code Style
 
